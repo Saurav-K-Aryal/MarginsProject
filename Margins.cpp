@@ -7,6 +7,7 @@
 
 
 using namespace std;
+
 const static char PAD_CHAR = ' ';
 
 // string StringPadRight(string* string, int padded_len, char *pad) {
@@ -21,8 +22,9 @@ const static char PAD_CHAR = ' ';
 //     return *string;
 // }
 
-void rpad(string* buffer, int right, char PAD_CHAR, ostream& out) {
-  out << setiosflags(ios::left) << setw(right + buffer->size() + 5) << setfill(PAD_CHAR) << *buffer << "\n";
+void rpad(string* buffer, int right, int left, char PAD_CHAR, ostream& out) {
+   int MAX_CHAR_LIMIT = 80; 
+   out << setiosflags(ios::left) << setw(right + MAX_CHAR_LIMIT + left) << setfill(PAD_CHAR) << *buffer << "\n";
 }
 //    string tmp;
 //    out.setf(ios_base::right);   // Tell the stream to
@@ -49,7 +51,7 @@ void addMargins(istream& in, ostream& out, int left, int right) {
       getline(in, tmp, '\n');
       tmp.insert(tmp.begin(), left, PAD_CHAR);
       cout << tmp;
-      rpad(&tmp, right, PAD_CHAR, out);                 // rpad from Recipe
+      rpad(&tmp, right, left, PAD_CHAR, out);                 // rpad from Recipe
       //out << tmp << '\n';
    }
 }
